@@ -18,7 +18,7 @@ recognition.onresult = function(event) {
 
 //  var transcript = event.results[current][0].transcript;
   var transcript = event.results[0][0].transcript;
- 
+ 	console.log('recieved')
 	console.log(transcript);
     Content += transcript;
     Textbox.val(Content);
@@ -40,7 +40,8 @@ recognition.onerror = function(event) {
 }
 
 $('#start-btn').on('click', function(e) {
-  if (Content.length) {
+console.log('started')
+	if (Content.length) {
     Content += ' ';
   }
   recognition.start();
