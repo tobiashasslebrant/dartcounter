@@ -1,6 +1,7 @@
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-  
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 var recognition = new SpeechRecognition();
 
 var Textbox = $('#textbox');
@@ -18,6 +19,7 @@ recognition.onresult = function(event) {
 //  var transcript = event.results[current][0].transcript;
   var transcript = event.results[0][0].transcript;
  
+	console.log(transcript);
     Content += transcript;
     Textbox.val(Content);
   
