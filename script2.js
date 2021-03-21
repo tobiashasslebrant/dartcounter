@@ -19,9 +19,9 @@ recognition.onresult = function(event) {
 	game501(score);
 }
 
-$('#start-btn').on('click', function(e) {
-	game501(40);
-});
+//$('#start-btn').on('click', function(e) {
+//	game501(40);
+//});
 
 function game501(score){
 	var total = scores.reduce((a, b) => a + b, 0)
