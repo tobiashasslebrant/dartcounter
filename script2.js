@@ -1,8 +1,5 @@
-var grammar = '#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;'
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
-var speechRecognitionList = new SpeechGrammarList();
-speechRecognitionList.addFromString(grammar, 1);
-recognition.grammars = speechRecognitionList;
 recognition.continuous = false;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
@@ -13,11 +10,50 @@ var bg = document.querySelector('html');
 
 document.body.onclick = function() {
   recognition.start();
-  console.log('Ready to receive a color command.');
 }
 
+var scores = [];
+
 recognition.onresult = function(event) {
-  var color = event.results[0][0].transcript;
-  diagnostic.textContent = 'Result received: ' + color;
-  bg.style.backgroundColor = color;
+	var score = event.results[0][0].transcript;
+	game501(score);
 }
+
+$('#start-btn').on('click', function(e) {
+	game501(40);
+});
+
+function game501(score){
+	var total = scores.reduce((a, b) => a + b, 0)
+	if(score == "back")
+	{
+		scores.pop();
+	}
+	if(score == "done")
+	{
+		scores = [];
+	}
+	if(!isNaN(score))
+	{
+		var remaining = 501-total+score;
+		var error = '';
+		if(remaining == 0)
+		{
+			console.log("Done! darts: " + scores.length * 3)
+			scores = [];
+		}
+		if(remaining < 0)
+		{
+			console.log('to high');
+		}
+		else
+		{
+			document.getElementById("instructions").innerHTML = score;
+			scores.push(score)
+			console.log(scores);
+			console.log("remaining:" + remaining);
+			//			recognition.start();
+		}
+	}
+}
+
