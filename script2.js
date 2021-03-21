@@ -15,28 +15,28 @@ document.body.onclick = function() {
 var scores = [];
 
 recognition.onresult = function(event) {
-	var score = event.results[0][0].transcript;
-	game501(parseInt(score));
+	var input = event.results[0][0].transcript;
+	game501(input);
 }
 
 //$('#start-btn').on('click', function(e) {
 //	game501(40);
 //});
 
-function game501(score){
-	var total = scores.reduce((a, b) => a + b, 0)
-	if(score == "back")
+function game501(input){
+	if(input == "back")
 	{
 		scores.pop();
 	}
-	if(score == "done")
+	if(input == "done")
 	{
 		scores = [];
 	}
-	if(!isNaN(score))
+	if(!isNaN(input))
 	{
+		var score = parseInt(input);
+		var total = scores.reduce((a, b) => a + b, 0)
 		var remaining = 501-total-score;
-		var error = '';
 		if(remaining == 0)
 		{
 			console.log("Done! darts: " + scores.length * 3)
