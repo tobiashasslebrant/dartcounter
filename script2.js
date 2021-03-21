@@ -16,7 +16,7 @@ var scores = [];
 
 recognition.onresult = function(event) {
 	var score = event.results[0][0].transcript;
-	game501(score);
+	game501(parseInt(score));
 }
 
 //$('#start-btn').on('click', function(e) {
@@ -45,6 +45,7 @@ function game501(score){
 		if(remaining < 0)
 		{
 			console.log('to high');
+  			recognition.start();
 		}
 		else
 		{
@@ -52,7 +53,7 @@ function game501(score){
 			scores.push(score)
 			console.log(scores);
 			console.log("remaining:" + remaining);
-			//			recognition.start();
+			recognition.start();
 		}
 	}
 }
