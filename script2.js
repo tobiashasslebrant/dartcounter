@@ -35,7 +35,7 @@ function game501(score){
 	}
 	if(!isNaN(score))
 	{
-		var remaining = 501-total+score;
+		var remaining = 501-total-score;
 		var error = '';
 		if(remaining == 0)
 		{
@@ -45,15 +45,14 @@ function game501(score){
 		if(remaining < 0)
 		{
 			console.log('to high');
-  			recognition.start();
 		}
+
 		else
 		{
 			document.getElementById("instructions").innerHTML = score;
 			scores.push(score)
 			console.log(scores);
 			console.log("remaining:" + remaining);
-			recognition.start();
 		}
 	}
 }
