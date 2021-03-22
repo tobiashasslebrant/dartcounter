@@ -19,9 +19,6 @@ var game = {
 	total: 0
 };
 
-var scores = [];
-var remaining = 501;
-var total = 0;
 
 recognition.onresult = function(event) {
 	var input = event.results[0][0].transcript;
@@ -87,7 +84,7 @@ function game501(input){
 }
 function roundComplete(noOfDarts = 0){
 	document.getElementById("scores").innerHTML = game.scores;
-	document.getElementById("round").innerHTML = game.scores.length;
+	document.getElementById("rounds").innerHTML = game.scores.length;
 	document.getElementById("darts").innerHTML = (game.scores.length * 3) + noOfDarts;
 
 }
@@ -95,4 +92,4 @@ function finishGame(){
 	game501("new");
 	document.getElementById("info").innerHTML = "Game finished";
 }
-	
+
