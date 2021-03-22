@@ -9,10 +9,19 @@ var diagnostic = document.querySelector('.output');
 var bg = document.querySelector('html');
 
 document.body.onclick = function() {
-  recognition.start();
+	 document.getElementById("info").innerHTML = "Speak!";
+ 	 recognition.start();
 }
 
+var game = {
+	scores: [],
+	remaining: 501,
+	total: 0
+};
+
 var scores = [];
+var remaining = 501;
+var total = 0;
 
 recognition.onresult = function(event) {
 	var input = event.results[0][0].transcript;
@@ -24,36 +33,66 @@ recognition.onresult = function(event) {
 //});
 
 function game501(input){
+	if(input == "new")
+	{
+		document.getElementById("info").innerHTML = "New game";
+		game = {
+			scores: [],
+			remaining: 501,
+			total: 0
+		};
+		roundComplete();
+	}
 	if(input == "back")
 	{
-		scores.pop();
+		document.getElementById("info").innerHTML = "Removed last score";
+		game.scores.pop();
+		roundComplete();
 	}
-	if(input == "done")
+	else if (input == "first")
 	{
-		scores = [];
+		roundComplete(1);
+		finishGame();
 	}
-	if(!isNaN(input))
+	else if (input == "second")
+	{
+		roundComplete(2);
+		finishGame();
+	}
+	else if (input == "third")
+	{
+		roundComplete(3);
+		finishGame();
+	}
+
+	else if(!isNaN(input))
 	{
 		var score = parseInt(input);
 		var total = scores.reduce((a, b) => a + b, 0)
 		var remaining = 501-total-score;
-		if(remaining == 0)
-		{
-			console.log("Done! darts: " + scores.length * 3)
-			scores = [];
-		}
-		if(remaining < 0)
+
+		if(remaining == 1 || remaining < 0)
 		{
 			console.log('to high');
 		}
-
 		else
 		{
-			document.getElementById("instructions").innerHTML = score;
-			scores.push(score)
+			game.scores.push(score);
+			game.remaining = remaining;
+			game.total = total;
 			console.log(scores);
 			console.log("remaining:" + remaining);
 		}
 	}
 }
+function roundComplete(noOfDarts = 0){
+	document.getElementById("scores").innerHTML = game.scores;
+	document.getElementById("round").innerHTML = game.scores.length;
+	document.getElementById("darts").innerHTML = (game.scores.length * 3) + noOfDarts;
 
+}
+function finishGame(){
+	game501("new");
+	document.getElementById("info").innerHTML = "Game finished";
+}
+	
