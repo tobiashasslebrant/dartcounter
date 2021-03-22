@@ -65,11 +65,12 @@ function game501(input){
 	else if(!isNaN(input))
 	{
 		var score = parseInt(input);
-		var total = scores.reduce((a, b) => a + b, 0)
-		var remaining = 501-total-score;
+		var total = game.scores.reduce((a, b) => a + b, 0) + score;
+		var remaining = 501-total;
 
 		if(remaining == 1 || remaining < 0)
 		{
+			document.getElementById("info").innerHTML = "to high";
 			console.log('to high');
 		}
 		else
@@ -77,8 +78,7 @@ function game501(input){
 			game.scores.push(score);
 			game.remaining = remaining;
 			game.total = total;
-			console.log(scores);
-			console.log("remaining:" + remaining);
+			console.log(game);
 		}
 	}
 }
