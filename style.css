@@ -27,6 +27,9 @@ body {
 p {
   display: inline;
 }
+.info{
+  padding-top: 20px;
+}
 
 .mycontainer {
     max-width: 300px;
