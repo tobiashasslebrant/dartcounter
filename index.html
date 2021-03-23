@@ -6,7 +6,7 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
-        <title>Speech to text conversion using JavaScript</title>
+        <title>Dartspeech</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -16,14 +16,61 @@
 
     <body>
         <div class="mycontainer">
-            <H3 id="info">Push to start</h3>
-            <div id="scores">
-                
+           
+            <div id="cell-header">
+                <div class="row">
+                    <div class="cell">Round</div>
+                    <div class="cell">Darts</div>
+                    <div class="cell">Remaining</div>
+                </div>
             </div>
-            
-            <div class="info"><p>Darts:</p><p id="darts"></p></div>
-            <div><p>Last command:</p><p id="lastCommand"></p></div>
+            <div id="scores">
+                <!-- <div class="row">
+                    <div class="cell">1</div>
+                    <div class="cell">99</div>
+                    <div class="cell">402</div>
+                </div>
+                <div class="row">
+                    <div class="cell">2</div>
+                    <div class="cell">99</div>
+                    <div class="cell">303</div>
+                </div>
+                <div class="row">
+                    <div class="cell">3</div>
+                    <div class="cell">99</div>
+                    <div class="cell">204</div>
+                </div>
+                <div class="row">
+                    <div class="cell">4</div>
+                    <div class="cell">99</div>
+                    <div class="cell">105</div>
+                </div>
+                <div class="row">
+                    <div class="cell">5</div>
+                    <div class="cell">99</div>
+                    <div class="cell">6</div>
+                </div>
+                <div class="row">
+                    <div class="cell">6</div>
+                    <div class="cell">6</div>
+                    <div class="cell">0</div>
+                </div> -->
+            </div>
 
+
+            <div id="summary">
+                <div class="row">
+                    <p class="header">Darts:</p><p id="darts">0</p>
+                </div>
+                <div class="row">
+                    <p class="header">Info:</p><p id="info">Push to start</p>
+                </div>
+                <div class="row">
+                    <p class="header">Last:</p><p id="lastCommand">    
+                </div>
+            </div>
+
+        </div>
         <script src="script2.js"></script>
     </body>
 </html>

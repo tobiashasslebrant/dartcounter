@@ -17,7 +17,8 @@ var game = {
 	scores: [],
 	remaining: 501,
 	total: 0,
-	finishingDarts:0
+	finishingDarts:0,
+	darts: 0
 };
 
 
@@ -35,7 +36,9 @@ function game501(input){
 			scores: [],
 			remaining: 501,
 			total: 0,
-			finishingDarts:0
+			finishingDarts:0,
+			darts: 0
+
 		};
 	}
 	else if (input == "back")
@@ -86,6 +89,9 @@ function game501(input){
 			console.log(game);
 		}
 	}
+	else{
+		document.getElementById("info").innerHTML = "Unknown command: " + input;
+	}
 	RenderResult();
 }
 
@@ -109,7 +115,7 @@ function RenderResult()
 	
 		var rowNode = document.createElement("div");
 
-		indexNode.classList.add("count");
+		indexNode.classList.add("cell");
 		scoreNode.classList.add("cell");
 		remainingNode.classList.add("cell");
 		rowNode.classList.add("row");
