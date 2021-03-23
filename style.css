@@ -4,8 +4,32 @@ body {
   font-size: 16px;
 }
 
+#scores{
+  position: relative;
+  border: whitesmoke 1px;
+  min-height: max-content;
+}
+.row{
+  display: block;
+}
+.cell{
+  display: inline-block;
+  width:40px;
+  text-align: right;
+  border-bottom: whitesmoke 1px solid;
+}
+.count{
+  display: inline-block;
+  width:20px;
+  text-align: left;
+  
+}
+p {
+  display: inline;
+}
+
 .mycontainer {
-    max-width: 500px;
+    max-width: 300px;
     margin: 0 auto;
     padding: 150px 100px;
     text-align: center;

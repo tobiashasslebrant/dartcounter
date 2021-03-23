@@ -9,7 +9,7 @@ var diagnostic = document.querySelector('.output');
 var bg = document.querySelector('html');
 
 document.body.onclick = function() {
-	document.getElementById("info").innerHTML = "Speak!";
+	document.getElementById("info").innerHTML = "";
  	recognition.start();
 }
 
@@ -25,10 +25,6 @@ recognition.onresult = function(event) {
 	var input = event.results[0][0].transcript;
 	game501(input);
 }
-
-//$('#start-btn').on('click', function(e) {
-//	game501(40);
-//});
 
 function game501(input){
 	if(input == "new")
@@ -78,7 +74,8 @@ function game501(input){
 			
 			if(game.remaining == 0)
 			{
-				game.darts = "waiting for input";
+				document.getElementById("info").innerHTML = "First, second or third dart?";
+				game.darts = "--";
 			}
 			else
 			{
@@ -98,15 +95,33 @@ function RenderResult()
 		scores.removeChild( scores.firstChild );
 	}
 
+	var runningRemaining = 501;
 	game.scores.forEach((item, index, arr) => {
-		var node = document.createElement("div");
-		var textnode = document.createTextNode(arr[index]);
-		node.appendChild(textnode);
-		scores.appendChild(node);
+		var score = arr[index];
+		runningRemaining = runningRemaining-score;
+		var indexNode = document.createElement("div");
+		var indexTextnode = document.createTextNode(index+1);
+		var scoreNode = document.createElement("div");
+		var scoreTextnode = document.createTextNode(score);
+		var remainingNode = document.createElement("div");
+		var remainingTextnode = document.createTextNode(runningRemaining);
+	
+		var rowNode = document.createElement("div");
+
+		indexNode.classList.add("count");
+		scoreNode.classList.add("cell");
+		remainingNode.classList.add("cell");
+		rowNode.classList.add("row");
+
+		indexNode.appendChild(indexTextnode);
+		scoreNode.appendChild(scoreTextnode);
+		remainingNode.appendChild(remainingTextnode);
+		rowNode.appendChild(indexNode);
+		rowNode.appendChild(scoreNode);
+		rowNode.appendChild(remainingNode);
+		scores.appendChild(rowNode);
 	});
 
-
-	document.getElementById("remaining").innerHTML = game.remaining;
 	document.getElementById("darts").innerHTML = game.darts;
 }
 function finishGame(finishingDarts){
