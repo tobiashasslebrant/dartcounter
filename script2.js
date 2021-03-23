@@ -9,14 +9,15 @@ var diagnostic = document.querySelector('.output');
 var bg = document.querySelector('html');
 
 document.body.onclick = function() {
-	 document.getElementById("info").innerHTML = "Speak!";
- 	 recognition.start();
+	document.getElementById("info").innerHTML = "Speak!";
+ 	recognition.start();
 }
 
 var game = {
 	scores: [],
 	remaining: 501,
-	total: 0
+	total: 0,
+	finishingDarts:0
 };
 
 
@@ -36,30 +37,26 @@ function game501(input){
 		game = {
 			scores: [],
 			remaining: 501,
-			total: 0
+			total: 0,
+			finishingDarts:0
 		};
-		roundComplete();
 	}
-	if(input == "back")
+	else if (input == "back")
 	{
 		document.getElementById("info").innerHTML = "Removed last score";
 		game.scores.pop();
-		roundComplete();
 	}
 	else if (input == "first")
 	{
-		roundComplete(1);
-		finishGame();
+		finishGame(1);
 	}
 	else if (input == "second")
 	{
-		roundComplete(2);
-		finishGame();
+		finishGame(2);
 	}
 	else if (input == "third")
 	{
-		roundComplete(3);
-		finishGame();
+		finishGame(3);
 	}
 
 	else if(!isNaN(input))
@@ -71,25 +68,50 @@ function game501(input){
 		if(remaining == 1 || remaining < 0)
 		{
 			document.getElementById("info").innerHTML = "to high";
-			console.log('to high');
 		}
 		else
 		{
 			game.scores.push(score);
 			game.remaining = remaining;
 			game.total = total;
+
+			
+			if(game.remaining == 0)
+			{
+				game.darts = "waiting for input";
+			}
+			else
+			{
+				game.darts = (game.scores.length * 3);
+			}
+	
 			console.log(game);
 		}
 	}
+	RenderResult();
 }
-function roundComplete(noOfDarts = 0){
-	document.getElementById("scores").innerHTML = game.scores;
-	document.getElementById("rounds").innerHTML = game.scores.length;
-	document.getElementById("darts").innerHTML = (game.scores.length * 3) + noOfDarts;
 
+function RenderResult()
+{
+	var scores =  document.getElementById("scores");
+	while( scores.firstChild ){
+		scores.removeChild( scores.firstChild );
+	}
+
+	game.scores.forEach((item, index, arr) => {
+		var node = document.createElement("div");
+		var textnode = document.createTextNode(arr[index]);
+		node.appendChild(textnode);
+		scores.appendChild(node);
+	});
+
+
+	document.getElementById("remaining").innerHTML = game.remaining;
+	document.getElementById("darts").innerHTML = game.darts;
 }
-function finishGame(){
-	game501("new");
+function finishGame(finishingDarts){
 	document.getElementById("info").innerHTML = "Game finished";
+	game.finishingDarts = finishingDarts;
+	game.darts = ((game.scores.length - 1) * 3) + game.finishingDarts;
 }
 
