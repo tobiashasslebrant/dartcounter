@@ -1,7 +1,7 @@
 body {
   background: #1e2440;
   color: #f2efe2;
-  font-size: 16px;
+  font-size: 50px;
 }
 
 #scores{
@@ -14,7 +14,7 @@ body {
 }
 .cell{
   display: inline-block;
-  width:40px;
+  width:140px;
   text-align: right;
   border-bottom: whitesmoke 1px solid;
 }
@@ -34,7 +34,7 @@ p {
 .mycontainer {
     max-width: 300px;
     margin: 0 auto;
-    padding: 150px 100px;
+    /* padding: 150px 100px; */
     text-align: center;
 }
 
