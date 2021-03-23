@@ -27,7 +27,8 @@ recognition.onresult = function(event) {
 }
 
 function game501(input){
-	if(input == "new")
+	document.getElementById("lastCommand").innerHTML = input;
+	if(input == "game")
 	{
 		document.getElementById("info").innerHTML = "New game";
 		game = {
