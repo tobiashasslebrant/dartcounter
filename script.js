@@ -18,7 +18,6 @@ var started = false;
 var game = {};
 
 document.body.onclick = function() {
-	document.getElementById("info").innerHTML = "";
 	if(started)
 	{
 		recognition.stop();
@@ -28,19 +27,20 @@ document.body.onclick = function() {
 	{
 		recognition.start();
 		started = true;
-		game501("game");
 	}
 }
 
 
 
 recognition.onresult = function(event) {
-	var input = event.results[0][0].transcript;
+	var lastInputIndex = events.results.length-1;
+	var input = event.results[lastInputIndex][0].transcript;
 	game501(input);
 }
 
 function game501(input){
 	document.getElementById("lastCommand").innerHTML = input;
+	document.getElementById("info").innerHTML = "";
 	if(input == "game")
 	{
 		document.getElementById("info").innerHTML = "New game";
