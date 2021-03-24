@@ -2,7 +2,7 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
-var numbersCmds = [...Array(180).keys()];
+var numberCmds = [...Array(180).keys()];
 var otherCmds = ['game', 'back', 'first','second','third'];
 var voiceCmds = numberCmds.concat(otherCmds);
 var grammar = '#JSGF V1.0; grammar voiceCmds; public <voiceCmd> = ' + voiceCmds.join(' | ') + ' ;'
