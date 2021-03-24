@@ -33,7 +33,7 @@ document.body.onclick = function() {
 
 
 recognition.onresult = function(event) {
-	var lastInputIndex = events.results.length-1;
+	var lastInputIndex = event.results.length-1;
 	var input = event.results[lastInputIndex][0].transcript;
 	game501(input);
 }
