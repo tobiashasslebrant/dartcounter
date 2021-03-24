@@ -14,23 +14,24 @@ recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
-
-//var diagnostic = document.querySelector('.output');
-//var bg = document.querySelector('html');
+var started = false;
+var game = {};
 
 document.body.onclick = function() {
 	document.getElementById("info").innerHTML = "";
- 	recognition.start();
+	if(started)
+	{
+		recognition.stop();
+		started = false;
+	}
+	else
+	{
+		recognition.start();
+		started = true;
+		game501("game");
+	}
 }
 
-
-var game = {
-	scores: [],
-	remaining: 501,
-	total: 0,
-	finishingDarts:0,
-	darts: 0
-};
 
 
 recognition.onresult = function(event) {
