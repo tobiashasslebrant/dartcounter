@@ -3,7 +3,7 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
 var numberCmds = [...Array(180).keys()];
-var otherCmds = ['game', 'back', 'first','second','third'];
+var otherCmds = ['game', 'back', 'first','second','third', 'fart', 'ford'];
 var voiceCmds = numberCmds.concat(otherCmds);
 var grammar = '#JSGF V1.0; grammar voiceCmds; public <voiceCmd> = ' + voiceCmds.join(' | ') + ' ;'
 
@@ -67,7 +67,7 @@ function game501(input){
 	{
 		finishGame(2);
 	}
-	else if (input == "third")
+	else if (input == "third" || input == "fart" || input == "ford")
 	{
 		finishGame(3);
 	}
