@@ -27,6 +27,7 @@ document.body.onclick = function() {
 	{
 		recognition.start();
 		started = true;
+		document.getElementById("info").innerHTML = 'Say "game" for new game';
 	}
 }
 
@@ -35,7 +36,7 @@ document.body.onclick = function() {
 recognition.onresult = function(event) {
 	var lastInputIndex = event.results.length-1;
 	var input = event.results[lastInputIndex][0].transcript;
-	game501(input);
+	game501(input.trim());
 }
 
 function game501(input){
