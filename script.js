@@ -1,4 +1,4 @@
-ivar SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
