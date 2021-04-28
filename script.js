@@ -86,7 +86,7 @@ function game501(input){
 
 		if(remaining == 1 || remaining < 0)
 		{
-			document.getElementById("info").innerHTML = "to high";
+			document.getElementById("info").innerHTML = input + " to high";
 		}
 		else
 		{
@@ -102,6 +102,7 @@ function game501(input){
 			}
 			else
 			{
+				document.getElementById("info").innerHTML = input + " thrown";
 				game.darts = (game.scores.length * 3);
 			}
 	
