@@ -1,4 +1,5 @@
 body {
+  overscroll-behavior: contain;
   background: #1e2440;
   color: #f2efe2;
   font-size: 50px;
