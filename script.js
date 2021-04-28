@@ -48,7 +48,6 @@ recognition.onresult = function(event) {
 }
 
 function game501(input){
-	document.getElementById("lastCommand").innerHTML = input;
 	document.getElementById("info").innerHTML = "";
 	if(input == "game")
 	{
