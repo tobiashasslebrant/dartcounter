@@ -22,12 +22,20 @@ document.body.onclick = function() {
 	{
 		recognition.stop();
 		started = false;
+		document.getElementById("info").innerHTML = 'Tap to start...';
 	}
 	else
 	{
 		recognition.start();
 		started = true;
-		document.getElementById("info").innerHTML = 'Say "game" for new game';
+		if(game.darts == 0)
+		{
+			document.getElementById("info").innerHTML = 'Say "game" for new game';
+		}
+		else
+		{
+			document.getElementById("info").innerHTML = 'Waiting for voice...';
+		}
 	}
 }
 
@@ -63,15 +71,14 @@ function game501(input){
 	{
 		finishGame(1);
 	}
-	else if (input == "second")
+	else if (input == "second" || input == "succumbed")
 	{
 		finishGame(2);
 	}
-	else if (input == "third" || input == "fart" || input == "ford")
+	else if (input == "third" || input == "fart" || input == "ford" || input == "bird" || input == "ferd" || input == "heard" || input == "hard" )
 	{
 		finishGame(3);
 	}
-
 	else if(!isNaN(input))
 	{
 		var score = parseInt(input);
@@ -103,7 +110,7 @@ function game501(input){
 		}
 	}
 	else{
-		document.getElementById("info").innerHTML = "Unknown command: " + input;
+		document.getElementById("info").innerHTML =  input + "?";
 	}
 	RenderResult();
 }
@@ -145,6 +152,9 @@ function RenderResult()
 	document.getElementById("darts").innerHTML = game.darts;
 }
 function finishGame(finishingDarts){
+	if ( game.remaining > 0)
+		return;
+
 	document.getElementById("info").innerHTML = "Game finished";
 	game.finishingDarts = finishingDarts;
 	game.darts = ((game.scores.length - 1) * 3) + game.finishingDarts;

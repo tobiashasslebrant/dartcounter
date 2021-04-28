@@ -27,14 +27,12 @@ body {
   max-width: 420px;
   padding:10px;
 }
-#summary p .header{
-  font-weight: bold;
-}
 #summary p{
+  font-size: 40px;
+  min-width: 300px;
   display: inline-block;
-  font-size: 20px;
-  min-width: 120px;
-  margin:0px;
+  text-align: center;
+  margin:0
 }
 
 #lastCommand{
@@ -70,9 +68,7 @@ body {
 }
 p {
   display: inline;
-}
-.info{
-  padding-top: 20px;
+  font-size:50px;
 }
 
 .mycontainer {
